@@ -1,0 +1,99 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+
+//create a master array with all customer names, the movies they bowrrowed, date borrowed
+//the return function the system date and the date on which movie was borrowed and calculates fees    
+
+void customermenu()
+{
+    int c;
+    char choice='y';
+    do
+    {
+        cout<<"OPTIONS:"<<endl;
+        cout<<"1.Rent a movie"<<endl;
+        cout<<"2.Return a movie"<<endl;
+        cin>>c;
+        switch(c)
+        {
+            case 1: rentmovie();
+                    break;
+            case 2: returnmovie();
+                    break;
+            default:cout<<"Wrong input! Please input numbers 1 or 2 only."<<endl;
+                    break;
+        }
+    cout<<"Do you want to continue? y or n"<<endl;
+    cin>>choice;
+    }
+    while(choice=='y'||choice=='Y');
+}
+
+void library()
+{
+    ofstream f;
+    f.open("movies.txt",ios::out);
+    f<<"PiratesOfTheCarribean Titanic Inception StarWars StarTrek Jaws TheMatrix ET TheSoundOfMusic Baby'sDayOut HomeAlone TheGodfather\n";
+    f<<"Tangled Frozen TheLionKing TheJungleBook Cars TheIncredibles Up TheLittleMermaid Cinderella BeautyAndTheBeast PrincessAndTheFrog SnowWhite Moana Rio Alladin ToyStory\n";
+    f<<"MeanGirls Jumanji Avengers SpiderMan Batman CaptainAmerica AliceInWonderland Gladiator ForrestGump TheLordOfTheRings PrettyWoman TheDevilWearsPrada PitchPerfect\n"
+    f.close();
+}
+
+void rentmovie();
+{
+    char cname[30];
+    char rmovie[50];
+    //system date 
+    cout<<"Enter your name"<<endl;
+    gets(cname);
+    cout<<"Which movie would you like to rent?"<<endl;
+    gets(rmovie);
+    ifstream f;
+    f.open("movies.txt",ios:in);
+    char word[50];
+    while(!f.eof())
+    {
+        f>>word;
+        if (strcmpi(word,rmovie)==0)
+        {
+            //make an array with customer name, movie borrowed and date borrowed
+            //add above info to the array
+            //allow renting of two movies somehow
+        }
+        else
+            cout<<"Movie not available"<<endl;
+    }
+    
+
+}
+
+void returnmovie()
+{
+
+}
+
+int main()
+{
+    //initial menu
+    char user[30];
+    cout<<"Welcome to ________ Movie Rentals"<<endl;
+    //give some aditional info? like borrow only one movie at a time, fees, etc.
+    cout<<"Are you a customer or a manager?"<<endl;
+    gets(user);
+    if(strcmpi(user,"Customer")==0)
+    {
+        customermenu();
+    }
+    else if(strcmpi(user,"Manager")==0)
+    {
+        int passw;
+        cout<<"Enter the password"<<endl;
+        cin>>passw;
+        if (passw==2806)
+        {
+            manager();
+        }
+    }
+    
+}

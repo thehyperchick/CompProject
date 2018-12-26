@@ -5,6 +5,12 @@
 //create a master array with all customer names, the movies they bowrrowed, date borrowed
 //the return function the system date and the date on which movie was borrowed and calculates fees    
 
+class Movie
+{
+    char MovieName[30];
+    int NoOfCopies;
+}
+
 void customermenu()
 {
     int c;
